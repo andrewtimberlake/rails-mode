@@ -1,7 +1,7 @@
 * rails-mode
 
 ** Overview
-An emacs minor mode to aid in the development of Ruby on Rails development
+An emacs minor mode to aid in Ruby on Rails development.
 
 ** Installation
 Add rails-mode.el to your emacs load path and then (require 'rails-mode)
