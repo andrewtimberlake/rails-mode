@@ -1,0 +1,26 @@
+* rails-mode
+
+** Overview
+An emacs minor mode to aid in the development of Ruby on Rails development
+
+** Installation
+Add rails-mode.el to your emacs load path and then (require 'rails-mode)
+
+** Features
+Quick finding of files in their respective directories
+
+  * rails-find-model (C-c o m)
+    - Will start ido-find-file within the models directory
+    - If you're within a controller, it will try to open the associated model
+  * rails-find-controller (C-c o c)
+    - Will start ido-find-file within the controllers directory
+    - If you're within a model, it will try to open the associated controller
+  * rails-find-view (C-c o v)
+    - Will start ido-find-file within the views directory
+    - If you're within a controller, it will start ido-find-file within the controller's view directory
+  * rails-find-javascript (C-c o j)
+    - Will start ido-find-file within the assets/javascripts directory
+  * rails-find-stylesheets (C-c o s)
+    - Will start ido-find-file within the assets/stylesheets directory
+  * rails-visit-routes
+    - Will load up the routes file
