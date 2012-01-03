@@ -32,6 +32,7 @@
 (define-key rails-mode-keymap (kbd "C-c oj") 'rails-find-javascript)
 (define-key rails-mode-keymap (kbd "C-c os") 'rails-find-stylesheet)
 (define-key rails-mode-keymap (kbd "C-c or") 'rails-visit-routes)
+(define-key rails-mode-keymap (kbd "C-c og") 'rails-visit-gemfile)
 
 (defgroup rails-mode nil
   "Rails minor mode.")
@@ -133,9 +134,28 @@
   (interactive)
   (find-file (concat (rails-directory(buffer-file-name)) "config/routes.rb")))
 
-;; Add rails-mode to ruby mode files that are part of a Rails project
+(defun rails-visit-gemfile ()
+  "Visits the Gemfile file"
+  (interactive)
+  (find-file (concat (rails-directory(buffer-file-name)) "Gemfile")))
+
+;; Add rails-mode to ruby files that are part of a Rails project
 (eval-after-load 'ruby-mode
   '(add-hook 'ruby-mode-hook
+             (lambda ()
+               (when (rails-directory(buffer-file-name))
+                 (rails-mode)))))
+
+;; Add rails-mode to coffeescript files that are part of a Rails project
+(eval-after-load 'coffee-mode
+  '(add-hook 'coffee-mode-hook
+             (lambda ()
+               (when (rails-directory(buffer-file-name))
+                 (rails-mode)))))
+
+;; Add rails-mode to haml files that are part of a Rails project
+(eval-after-load 'haml-mode
+  '(add-hook 'haml-mode-hook
              (lambda ()
                (when (rails-directory(buffer-file-name))
                  (rails-mode)))))
